@@ -28,6 +28,7 @@ function setupClickListeners() {
 //this function handles the get request and appends the dom with the response
 function getTasks() {
   console.log("in get todo");
+
   $.ajax({
     type: "GET",
     url: "/todo",
@@ -42,7 +43,7 @@ function getTasks() {
 //this function displays the data on the DOM
 function appendDom(tasks) {
   $("#viewTasks").empty();
-
+  $("#toDoInput").val(""); //emptying input field after submit
   for (let i = 0; i < tasks.length; i++) {
     const task = tasks[i];
     let completionStatus = task.is_complete ? "Y" : "N";
