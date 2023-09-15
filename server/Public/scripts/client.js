@@ -21,7 +21,7 @@ function setupClickListeners() {
   });
   //add click listener here
 
-  $("#viewTasks").on("click", ".deleteBtn", deleteTask);
+  $("#viewTasks").on("click", ".deleteBtn", deleteSwal);
   $("#viewTasks").on("click", ".completeBtn", putTask);
 } //end setupClickListeners
 
@@ -98,24 +98,32 @@ function putTask(event) {
     })
     .catch((err) => console.log("Error in PUT", err));
 }
-
+function deleteSwal(event) {
+  swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not be able to recover this task",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((confirm) => {
+    console.log(confirm);
+    if (confirm) {
+      deleteTask(event);
+      console.log("deleted task!");
+      swal("GO YOU! another task complete!", {
+        icon: "success",
+      });
+    } else {
+      swal("Don't be lazy. finish your task");
+    }
+  });
+}
 const deleteTask = (event) => {
   const id = $(event.target).data("id");
-
   $.ajax({
     method: "DELETE",
     url: `/todo/${id}`,
   })
-    .then(() => {
-      getTasks();
-    })
+    .then(() => getTasks())
     .catch((err) => console.log(err));
 };
-// client.js
-
-// Assuming you have an array of tasks with is_complete property
-const tasks = [
-  { taskName: "Task 1", is_complete: false },
-  { taskName: "Task 2", is_complete: true },
-  // Add more tasks here
-];
