@@ -26,7 +26,7 @@ router.post("/", (req, res) => {
   let newTask = req.body;
   console.log("in router POST", newTask);
 
-  let queryText = `INSERT INTO "tasks" (task,) VALUES ($1);`;
+  let queryText = `INSERT INTO "tasks" (task) VALUES ($1);`;
   pool
     .query(queryText, [newTask.task])
 
@@ -48,7 +48,7 @@ router.put("/:id", (req, res) => {
   const queryText = `UPDATE "tasks" SET "is_complete" = true WHERE "id" = $1;`;
   pool
     .query(queryText, [id])
-    .then(() => res.sendStatus(204))
+    .then(() => res.sendStatus(200))
     .catch((err) => {
       console.log("Error in UPDATING tasks table", err);
       res.sendStatus(500);
