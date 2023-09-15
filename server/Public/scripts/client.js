@@ -111,3 +111,11 @@ const deleteTask = (event) => {
     })
     .catch((err) => console.log(err));
 };
+// client.js
+
+// Assuming you have an array of tasks with is_complete property
+const tasks = [
+  { taskName: "Task 1", is_complete: false },
+  { taskName: "Task 2", is_complete: true },
+  // Add more tasks here
+];

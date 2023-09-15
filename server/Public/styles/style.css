@@ -1,3 +1,77 @@
+/* Reset some default styles */
+body,
+h1,
+h2 {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333; /* Dark gray text color */
+}
+
 body {
-  background-color: blanchedalmond;
+  background-color: #f0f0f0; /* Light gray background color */
+}
+
+header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+div {
+  background-color: #fff; /* White background for input section */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Drop shadow */
+}
+
+input[type="text"] {
+  width: 70%;
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 3px;
+}
+
+button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #b8b4b4; /* Light gray border between rows */
+}
+
+/* Style the table header */
+th {
+  background-color: #333;
+  color: white;
+}
+
+/* Style the table rows alternately */
+tr:nth-child(even) {
+  background-color: #dcd8d8; /* Light gray background for even rows */
 }
