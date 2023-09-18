@@ -47,9 +47,10 @@ function appendDom(tasks) {
   for (let i = 0; i < tasks.length; i++) {
     const task = tasks[i];
     let completionStatus = task.is_complete ? "Y" : "N";
+    let backgroundColor = task.is_complete ? "#8AD5A8" : "#C47E7E";
 
     $("#viewTasks").append(`
-  <tr>
+  <tr style="background-color: ${backgroundColor}">
   <td>${task.task}</td>
  
  
@@ -97,7 +98,8 @@ function putTask(event) {
       getTasks();
     })
     .catch((err) => console.log("Error in PUT", err));
-}
+} //end putTask
+
 function deleteSwal(event) {
   swal({
     title: "Are you sure?",
@@ -117,7 +119,8 @@ function deleteSwal(event) {
       swal("Don't be lazy. finish your task");
     }
   });
-}
+} // end deleteSwal
+
 const deleteTask = (event) => {
   const id = $(event.target).data("id");
   $.ajax({
@@ -126,4 +129,17 @@ const deleteTask = (event) => {
   })
     .then(() => getTasks())
     .catch((err) => console.log(err));
-};
+}; // end deleteTask
+
+//const item = $("#viewTasks".is_complete);
+
+// function changeColor() {
+//   // Change the background color based on the cell value
+//   if (item === "Y") {
+//     row.css("background-color", "red");
+//   } else if (item === "N") {
+//     row.css("background-color", "green");
+//   } else {
+//     row.css("background-color", "yellow");
+//   }
+// }
