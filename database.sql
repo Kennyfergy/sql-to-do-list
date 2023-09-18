@@ -10,8 +10,8 @@ INSERT INTO "tasks"
 	("task", "is_complete")
 VALUES
 	('take out the trash', false),
-	('finish the weekend homework', false),
-	('cry for help', false),
+	('finish the weekend homework', true),
+	('take the dog for a walk', false),
 	('get knocked down', false),
-	('get back up', false),
-	('conquer the world', false);
+	('get up again', false),
+	('never gonna keep me down', true);

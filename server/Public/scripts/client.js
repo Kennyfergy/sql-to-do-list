@@ -9,15 +9,16 @@ $(document).ready(function () {
 }); // end onReady
 
 //this function is an overly complicated input value grabber
+//added a checkEmpty function to check if the input fields are empty before submitting
 function setupClickListeners() {
   $("#submitBtn").on("click", function () {
     console.log("in addButton on click");
-    let taskToSubmit = {
-      task: $("#toDoInput").val(),
-    };
-
-    // call saveKoala with the new object
-    postTask(taskToSubmit);
+    if (checkEmpty()) {
+      let taskToSubmit = {
+        task: $("#toDoInput").val(),
+      };
+      postTask(taskToSubmit);
+    }
   });
   //add click listener here
 
@@ -28,7 +29,6 @@ function setupClickListeners() {
 //this function handles the get request and appends the dom with the response
 function getTasks() {
   console.log("in get todo");
-
   $.ajax({
     type: "GET",
     url: "/todo",
@@ -39,6 +39,15 @@ function getTasks() {
     })
     .catch((err) => console.log("Error in GET", err));
 } //end getTasks
+
+//function to check if input fields are empty when clicking submit
+function checkEmpty() {
+  if ($("#toDoInput").val() === "") {
+    alert("Please input a task");
+    return false;
+  }
+  return true;
+} // end checkEmpty
 
 //this function displays the data on the DOM
 function appendDom(tasks) {
