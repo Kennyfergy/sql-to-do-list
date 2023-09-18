@@ -22,7 +22,7 @@ function setupClickListeners() {
   //add click listener here
 
   $("#viewTasks").on("click", ".deleteBtn", deleteSwal);
-  $("#viewTasks").on("click", ".completeBtn", putTask);
+  $("#viewTasks").on("click", ".completeBtn", putSwal);
 } //end setupClickListeners
 
 //this function handles the get request and appends the dom with the response
@@ -84,6 +84,27 @@ function postTask(newTask) {
     .catch((err) => console.log("Error in POST", err));
 } //end postTask
 
+function putSwal(event) {
+  swal({
+    title: "Are you sure?",
+    text: "Click OK to mark the task complete",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((confirm) => {
+    console.log(confirm);
+    if (confirm) {
+      putTask(event);
+      console.log("task marked complete");
+      swal("Great job completing this task!", {
+        icon: "success",
+      });
+    } else {
+      swal("Don't be lazy. finish your task");
+    }
+  });
+} // end putSwal
+
 function putTask(event) {
   const taskId = $(event.target).data("id");
   console.log("Change status of task", $(event.target));
@@ -112,7 +133,7 @@ function deleteSwal(event) {
     if (confirm) {
       deleteTask(event);
       console.log("deleted task!");
-      swal("GO YOU! another task complete!", {
+      swal("The task has been deleted", {
         icon: "success",
       });
     } else {
@@ -130,16 +151,3 @@ const deleteTask = (event) => {
     .then(() => getTasks())
     .catch((err) => console.log(err));
 }; // end deleteTask
-
-//const item = $("#viewTasks".is_complete);
-
-// function changeColor() {
-//   // Change the background color based on the cell value
-//   if (item === "Y") {
-//     row.css("background-color", "red");
-//   } else if (item === "N") {
-//     row.css("background-color", "green");
-//   } else {
-//     row.css("background-color", "yellow");
-//   }
-// }
