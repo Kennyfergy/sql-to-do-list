@@ -19,7 +19,7 @@ Clone this repo to your local device.
 
 - Create a local sql database with the name: weekend-to-do-app - I used Postico2
 - Use the database.sql file data to build the database table
-- In the terminal, navigate to the project folder, input: npm install
+- In the terminal, navigate to the project folder, input: npm init
   This will install the node modules folder and package-lock.json
 - In the terminal, input: npm i express pg
   This will install express and postgres
