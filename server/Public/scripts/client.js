@@ -51,7 +51,7 @@ function appendDom(tasks) {
     $("#viewTasks").append(`
   <tr>
   <td>${task.task}</td>
-  <td>${task.is_complete}</td>
+ 
  
   <td>${completionStatus}</td>
   <td>
